@@ -73,8 +73,7 @@ const Hosts: React.FC = () => {
           <p className="text-gray-700 text-lg md:text-xl leading-relaxed text-center font-medium space-y-4">
             Mário faz aniversário em 15/12 e Cesar em 28/12. Como manda a tradição, comemoram juntos numa data entre os dois aniversários. Este ano ambos completando 33 anos.
             <br/><br/>
-            Amigos desde 2005, quando se encontraram pelas ruas de Bagé e nunca mais desgrudaram.
-            Em 17/12/2006, estavam lá comemorando juntos o título mundial do Internacional pelas ruas de Bagé.
+            Amigos desde 2005, em 17/12/2006, estavam lá comemorando juntos o título mundial do Sport Club Internacional pelas ruas de Bagé.
             <br/><br/>
             <span className="text-party-600 font-bold text-2xl block mt-6">E agora querem comemorar contigo também.</span>
           </p>
