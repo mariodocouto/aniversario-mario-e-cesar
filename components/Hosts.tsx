@@ -1,6 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Hosts: React.FC = () => {
+  // Estados para gerenciar as tentativas de carregamento das imagens
+  // Isso resolve o problema das extensões duplicadas (ex: .jpg.png) vistas no GitHub
+  const [oldPhotoSrc, setOldPhotoSrc] = useState('/foto-antiga.jpg');
+  const [newPhotoSrc, setNewPhotoSrc] = useState('/foto-nova.jpg');
+
+  const handleOldPhotoError = () => {
+    // Tenta sequencialmente as variações de nome de arquivo baseadas no print do GitHub
+    if (oldPhotoSrc === '/foto-antiga.jpg') setOldPhotoSrc('/foto-antiga.jpg.png');
+    else if (oldPhotoSrc === '/foto-antiga.jpg.png') setOldPhotoSrc('/foto-antiga.png');
+    else if (oldPhotoSrc === '/foto-antiga.png') setOldPhotoSrc('/foto-antiga.jpeg');
+  };
+
+  const handleNewPhotoError = () => {
+    // Tenta sequencialmente as variações de nome de arquivo baseadas no print do GitHub
+    if (newPhotoSrc === '/foto-nova.jpg') setNewPhotoSrc('/foto-nova.jpg.jpg');
+    else if (newPhotoSrc === '/foto-nova.jpg.jpg') setNewPhotoSrc('/foto-nova.png');
+    else if (newPhotoSrc === '/foto-nova.png') setNewPhotoSrc('/foto-nova.jpeg');
+  };
+
   return (
     <section id="hosts" className="py-20 bg-party-100">
       <div className="max-w-6xl mx-auto px-4">
@@ -13,37 +32,35 @@ const Hosts: React.FC = () => {
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12">
           
           {/* Foto 1 - Antiga */}
-          {/* Importante: Salve a foto antiga (camisa xadrez) como 'foto-antiga.jpg' na pasta public */}
           <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-2xl hover:z-10">
-            <div className="aspect-[3/4] bg-gray-200">
+            <div className="aspect-[3/4] bg-gray-200 relative">
               <img 
-                src="/foto-antiga.jpg" 
+                src={oldPhotoSrc}
                 alt="Mário e Cesar - O Início (2005)" 
+                onError={handleOldPhotoError}
                 className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
-                onError={(e) => {
-                    // Fallback visual caso a imagem não exista
-                    e.currentTarget.src = "https://placehold.co/600x800/fb923c/ffffff?text=Salve+como+foto-antiga.jpg";
-                }}
               />
+              {/* Fallback visual caso todas as tentativas falhem */}
+              <div className="absolute inset-0 flex items-center justify-center -z-10 text-gray-400 text-sm text-center p-4">
+                Carregando...<br/>(Verifique se foto-antiga.jpg está na pasta public)
+              </div>
             </div>
-            {/* Texto sobreposto removido conforme solicitado */}
           </div>
 
           {/* Foto 2 - Recente */}
-          {/* Importante: Salve a foto recente (camisa rosa) como 'foto-nova.jpg' na pasta public */}
           <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transform -rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-2xl hover:z-10">
-             <div className="aspect-[3/4] bg-gray-200">
+             <div className="aspect-[3/4] bg-gray-200 relative">
               <img 
-                src="/foto-nova.jpg" 
+                src={newPhotoSrc}
                 alt="Mário e Cesar - Atualmente" 
+                onError={handleNewPhotoError}
                 className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
-                onError={(e) => {
-                    // Fallback visual caso a imagem não exista
-                    e.currentTarget.src = "https://placehold.co/600x800/c2410c/ffffff?text=Salve+como+foto-nova.jpg";
-                }}
               />
+              {/* Fallback visual caso todas as tentativas falhem */}
+              <div className="absolute inset-0 flex items-center justify-center -z-10 text-gray-400 text-sm text-center p-4">
+                Carregando...<br/>(Verifique se foto-nova.jpg está na pasta public)
+              </div>
             </div>
-            {/* Texto sobreposto removido conforme solicitado */}
           </div>
         </div>
 
