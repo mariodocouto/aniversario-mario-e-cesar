@@ -10,7 +10,7 @@ const products: Product[] = [
     price: 10, 
     description: "Pra frear na sinaleira", 
     imageColor: "bg-slate-300",
-    paymentLink: "https://invoice.infinitepay.io/mariodocouto/gbF0QCurh"
+    paymentLink: "https://loja.infinitepay.io/mariodocouto/sza4362-pastilha-de-freio"
   },
   { 
     id: 2, 
@@ -18,7 +18,7 @@ const products: Product[] = [
     price: 20, 
     description: "Ninguém sabe o que faz", 
     imageColor: "bg-red-200",
-    paymentLink: "https://invoice.infinitepay.io/mariodocouto/1NCV2esJmf"
+    paymentLink: "https://loja.infinitepay.io/mariodocouto/gme3903-sensor-generico"
   },
   { 
     id: 3, 
@@ -26,7 +26,7 @@ const products: Product[] = [
     price: 50, 
     description: "Iluminando caminhos", 
     imageColor: "bg-yellow-100",
-    paymentLink: "https://invoice.infinitepay.io/mariodocouto/1905WAYVFN"
+    paymentLink: "https://loja.infinitepay.io/mariodocouto/fjc3740-lampada-de-farol"
   },
   { 
     id: 4, 
@@ -34,7 +34,7 @@ const products: Product[] = [
     price: 75, 
     description: "Energia pura", 
     imageColor: "bg-orange-200",
-    paymentLink: "https://invoice.infinitepay.io/mariodocouto/1NCVZJfMpt"
+    paymentLink: "https://loja.infinitepay.io/mariodocouto/sam7944-chicote-eletrico"
   },
   { 
     id: 5, 
@@ -42,7 +42,7 @@ const products: Product[] = [
     price: 100, 
     description: "Pra correr pro abraço", 
     imageColor: "bg-lime-200",
-    paymentLink: "https://invoice.infinitepay.io/mariodocouto/5K9jPan9j"
+    paymentLink: "https://loja.infinitepay.io/mariodocouto/kdk6175-cabo-de-acelerador"
   },
   { 
     id: 6, 
@@ -50,7 +50,7 @@ const products: Product[] = [
     price: 200, 
     description: "O presente premium", 
     imageColor: "bg-teal-200",
-    paymentLink: "https://invoice.infinitepay.io/mariodocouto/6s0ZWLNK6l"
+    paymentLink: "https://loja.infinitepay.io/mariodocouto/npk8638-alternador-recondicionado"
   },
 ];
 
