@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { submitRSVP } from '../services/rsvpService';
-import { Send, CheckCircle, Salad } from 'lucide-react';
+import { Send, CheckCircle, Salad, AlertCircle } from 'lucide-react';
 
 const RSVP: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -8,15 +8,19 @@ const RSVP: React.FC = () => {
     guests: 0,
     isVegan: false,
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    await submitRSVP(formData);
-    setIsSubmitting(false);
-    setSubmitted(true);
+    setStatus('submitting');
+    
+    try {
+      await submitRSVP(formData);
+      setStatus('success');
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
   };
 
   return (
@@ -26,17 +30,26 @@ const RSVP: React.FC = () => {
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-party-800 mb-2">Confirmar Presença</h2>
             <p className="text-gray-600">
-              Pra organização ficar fina, pedimos que confirme até 18/12 às 12h.
+              Preencha os dados abaixo para garantir seu lugar no churrasco.
             </p>
           </div>
 
-          {submitted ? (
+          {status === 'success' ? (
             <div className="text-center py-10 animate-fade-in-up">
               <div className="inline-block p-4 bg-green-100 rounded-full mb-4">
                 <CheckCircle className="w-16 h-16 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-2">Presença confirmada!</h3>
-              <p className="text-gray-600">Te esperamos no churrasco!</p>
+              <h3 className="text-2xl font-bold text-gray-800 mb-2">Presença Confirmada!</h3>
+              <p className="text-gray-600 mb-6">Já avisamos o assador. Te esperamos lá!</p>
+              <button 
+                onClick={() => {
+                  setFormData({ name: '', guests: 0, isVegan: false });
+                  setStatus('idle');
+                }}
+                className="text-party-600 font-bold underline hover:text-party-800"
+              >
+                Confirmar outra pessoa
+              </button>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -80,19 +93,26 @@ const RSVP: React.FC = () => {
                 {formData.isVegan && (
                   <div className="mt-3 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100 flex items-center gap-2 animate-fade-in-up">
                     <span role="img" aria-label="steak">🥩</span>
-                    Que pena, é um churrasco, só vai ter carne.
+                    Relaxa, a gente providencia algo sem carne pra você!
                   </div>
                 )}
               </div>
 
+              {status === 'error' && (
+                <div className="p-4 bg-red-100 text-red-700 rounded-xl flex items-center gap-2">
+                  <AlertCircle className="w-5 h-5" />
+                  Houve um erro ao enviar. Tente novamente.
+                </div>
+              )}
+
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={status === 'submitting'}
                 className="w-full bg-party-600 hover:bg-party-700 text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {isSubmitting ? 'Enviando...' : (
+                {status === 'submitting' ? 'Enviando...' : (
                   <>
-                    Confirmar presença
+                    Confirmar Presença
                     <Send className="w-5 h-5" />
                   </>
                 )}
