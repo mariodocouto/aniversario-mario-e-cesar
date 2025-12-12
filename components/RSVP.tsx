@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { submitRSVP } from '../services/rsvpService';
-import { Send, CheckCircle, Salad, AlertCircle, Skull } from 'lucide-react';
+import { Send, CheckCircle, Salad, AlertCircle, Skull, Eye, X } from 'lucide-react';
 
 const RSVP: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ const RSVP: React.FC = () => {
   });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [showVeganModal, setShowVeganModal] = useState(false);
+  const [showCuriousModal, setShowCuriousModal] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,7 +45,7 @@ const RSVP: React.FC = () => {
 
   return (
     <section id="rsvp" className="py-20 bg-party-200 relative">
-      {/* Modal de Desconvite */}
+      {/* Modal de Desconvite (Vegano) */}
       {showVeganModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in duration-300">
           <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border-4 border-red-500 transform scale-100 animate-in zoom-in-95 duration-300">
@@ -79,8 +80,41 @@ const RSVP: React.FC = () => {
         </div>
       )}
 
+      {/* Modal de Curioso */}
+      {showCuriousModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-in fade-in duration-300">
+          <div className="bg-white rounded-3xl p-8 max-w-md w-full text-center shadow-2xl border-4 border-party-400 transform scale-100 animate-in zoom-in-95 duration-300 relative">
+            <button 
+              onClick={() => setShowCuriousModal(false)}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <Eye className="w-10 h-10 text-party-600" />
+            </div>
+            
+            <h3 className="text-3xl font-black text-party-800 mb-4 uppercase leading-none">
+              Deixa de ser<br/>curioso(a)!
+            </h3>
+            
+            <p className="text-gray-600 text-lg mb-8 font-medium">
+              O importante é tu ir, fofoqueiro(a).
+            </p>
+            
+            <button
+              onClick={() => setShowCuriousModal(false)}
+              className="w-full py-3 px-6 bg-party-600 hover:bg-party-700 text-white font-bold rounded-xl transition-colors shadow-lg"
+            >
+              Entendi, desculpa
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="max-w-2xl mx-auto px-4">
-        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+        <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 relative overflow-hidden">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-party-800 mb-2">Confirmar Presença</h2>
             <p className="text-gray-600">
@@ -166,6 +200,16 @@ const RSVP: React.FC = () => {
               </button>
             </form>
           )}
+
+          <div className="mt-8 pt-6 border-t border-gray-100 text-center">
+            <button 
+              onClick={() => setShowCuriousModal(true)}
+              className="text-sm text-gray-500 hover:text-party-600 font-medium underline decoration-dashed underline-offset-4 transition-colors flex items-center justify-center gap-2 mx-auto"
+            >
+              <Eye className="w-4 h-4" />
+              Ver lista de convidados confirmados
+            </button>
+          </div>
         </div>
       </div>
     </section>
