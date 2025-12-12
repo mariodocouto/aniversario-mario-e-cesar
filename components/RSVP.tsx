@@ -93,7 +93,7 @@ const RSVP: React.FC = () => {
                 {formData.isVegan && (
                   <div className="mt-3 p-3 bg-red-50 text-red-700 text-sm rounded-lg border border-red-100 flex items-center gap-2 animate-fade-in-up">
                     <span role="img" aria-label="steak">🥩</span>
-                    Relaxa, a gente providencia algo sem carne pra você!
+                    Que pena. É um churrasco, só vai ter carne.
                   </div>
                 )}
               </div>
