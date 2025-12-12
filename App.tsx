@@ -14,8 +14,8 @@ const HomePage: React.FC = () => (
     <Hero />
     <EventDetails />
     <Hosts />
-    <Gifts />
     <RSVP />
+    <Gifts />
   </>
 );
 

@@ -27,8 +27,8 @@ const Header: React.FC = () => {
     { label: 'Início', id: 'home' },
     { label: 'O Evento', id: 'event' },
     { label: 'Aniversariantes', id: 'hosts' },
-    { label: 'Presentes', id: 'gifts' },
     { label: 'Confirmar Presença', id: 'rsvp' },
+    { label: 'Presentes', id: 'gifts' },
   ];
 
   return (
