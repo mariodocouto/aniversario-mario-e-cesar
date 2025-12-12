@@ -1,25 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ShoppingCart, ArrowLeft, Wrench } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '../types';
 
 const products: Product[] = [
-  { id: 1, name: "Pastilha de Freio HB20 2014", price: 10, description: "Pra frear na sinaleira", imageColor: "bg-slate-300" },
-  { id: 2, name: "Parafuso do Motor HB20 2014", price: 12, description: "Essencial pra não cair o motor", imageColor: "bg-zinc-400" },
-  { id: 3, name: "Tampa de Reservatório HB20 2014", price: 15, description: "Evita vazar água", imageColor: "bg-blue-200" },
-  { id: 4, name: "Sensor Genérico HB20 2014", price: 20, description: "Ninguém sabe o que faz", imageColor: "bg-red-200" },
-  { id: 5, name: "Suporte de Plástico HB20 2014", price: 25, description: "Quebra fácil, precisa repor", imageColor: "bg-gray-200" },
-  { id: 6, name: "Mangueira de Ar HB20 2014", price: 30, description: "Pro carro respirar", imageColor: "bg-stone-300" },
-  { id: 7, name: "Braço Auxiliar HB20 2014", price: 40, description: "Dando uma força", imageColor: "bg-neutral-300" },
-  { id: 8, name: "Lâmpada de Farol HB20 2014", price: 50, description: "Iluminando caminhos", imageColor: "bg-yellow-100" },
-  { id: 9, name: "Borracha de Porta HB20 2014", price: 60, description: "Contra chuva e vento", imageColor: "bg-slate-800" },
-  { id: 10, name: "Chicote Elétrico HB20 2014", price: 80, description: "Energia pura", imageColor: "bg-orange-200" },
-  { id: 11, name: "Cabo de Acelerador HB20 2014", price: 120, description: "Pra correr pro abraço", imageColor: "bg-lime-200" },
-  { id: 12, name: "Alternador Genérico HB20 2014", price: 250, description: "O presente premium", imageColor: "bg-teal-200" },
+  { 
+    id: 1, 
+    name: "Pastilha de Freio", 
+    price: 10, 
+    description: "Pra frear na sinaleira", 
+    imageColor: "bg-slate-300",
+    paymentLink: "https://invoice.infinitepay.io/mariodocouto/gbF0QCurh"
+  },
+  { 
+    id: 2, 
+    name: "Sensor Genérico", 
+    price: 20, 
+    description: "Ninguém sabe o que faz", 
+    imageColor: "bg-red-200",
+    paymentLink: "https://invoice.infinitepay.io/mariodocouto/1NCV2esJmf"
+  },
+  { 
+    id: 3, 
+    name: "Lâmpada de Farol", 
+    price: 50, 
+    description: "Iluminando caminhos", 
+    imageColor: "bg-yellow-100",
+    paymentLink: "https://invoice.infinitepay.io/mariodocouto/1905WAYVFN"
+  },
+  { 
+    id: 4, 
+    name: "Chicote Elétrico", 
+    price: 75, 
+    description: "Energia pura", 
+    imageColor: "bg-orange-200",
+    paymentLink: "https://invoice.infinitepay.io/mariodocouto/1NCVZJfMpt"
+  },
+  { 
+    id: 5, 
+    name: "Cabo de Acelerador", 
+    price: 100, 
+    description: "Pra correr pro abraço", 
+    imageColor: "bg-lime-200",
+    paymentLink: "https://invoice.infinitepay.io/mariodocouto/5K9jPan9j"
+  },
+  { 
+    id: 6, 
+    name: "Alternador Recondicionado", 
+    price: 200, 
+    description: "O presente premium", 
+    imageColor: "bg-teal-200",
+    paymentLink: "https://invoice.infinitepay.io/mariodocouto/6s0ZWLNK6l"
+  },
 ];
 
 const MarioShop: React.FC = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-slate-100 pt-20 pb-20">
@@ -45,7 +85,7 @@ const MarioShop: React.FC = () => {
             <p className="text-slate-500">Ajude a manter a lenda rodando. (Valores simbólicos)</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
             <div key={product.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col border border-slate-200">
               <div className={`h-32 ${product.imageColor} flex items-center justify-center`}>
@@ -57,12 +97,10 @@ const MarioShop: React.FC = () => {
                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
                   <span className="text-xl font-bold text-party-600">R$ {product.price},00</span>
                   <a 
-                    href="#" 
-                    className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold py-2 px-4 rounded-lg transition-colors"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        alert("Aqui seria aberto o link do Mercado Pago para: " + product.name);
-                    }}
+                    href={product.paymentLink} 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white text-sm font-bold py-2 px-4 rounded-lg transition-all hover:scale-105 transform duration-200"
                   >
                     Presentear
                     <ShoppingCart className="w-4 h-4" />

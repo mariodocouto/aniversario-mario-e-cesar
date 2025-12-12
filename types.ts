@@ -4,6 +4,7 @@ export interface Product {
   price: number;
   description: string;
   imageColor: string;
+  paymentLink?: string;
 }
 
 export interface RSVPFormData {
