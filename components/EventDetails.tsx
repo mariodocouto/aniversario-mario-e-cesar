@@ -2,9 +2,6 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Nome do arquivo da imagem da banda com caminho absoluto atualizado para .png
-  const jubilaPhoto = "/foto-pagode.png";
-
   return (
     <section id="event" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -15,7 +12,7 @@ const EventDetails: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-          {/* Lado Esquerdo: Cronograma e Banda */}
+          {/* Lado Esquerdo: Cronograma */}
           <div className="space-y-8 flex flex-col">
             <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden flex-1">
               <div className="absolute top-0 right-0 p-4 opacity-5">
@@ -57,20 +54,6 @@ const EventDetails: React.FC = () => {
                     <p className="font-black text-xl text-gray-800 leading-none mb-1">16:00h – Show ao Vivo</p>
                     <p className="text-gray-600">Muita música para animar a galera até o sol se pôr.</p>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Card da Banda - Exibe apenas "Atração Principal" sobre a foto */}
-            <div className="group relative h-72 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300">
-              <img 
-                src={jubilaPhoto}
-                alt="Atração Principal" 
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
-                <div>
-                  <h4 className="text-white font-black text-3xl uppercase italic leading-none">Atração Principal</h4>
                 </div>
               </div>
             </div>
