@@ -6,6 +6,7 @@ const TheVibe: React.FC = () => {
     <section id="the-vibe" className="py-12 md:py-20 bg-party-100">
       <div className="max-w-4xl mx-auto px-4">
         <div className="bg-white p-5 md:p-12 rounded-3xl shadow-2xl border-4 border-party-400 relative overflow-hidden">
+          {/* Decoração de fundo sutil */}
           <div className="absolute -right-4 -bottom-4 opacity-5">
             <Beer className="w-32 h-32 md:w-40 md:h-40 text-party-800" />
           </div>
@@ -26,7 +27,7 @@ const TheVibe: React.FC = () => {
             <div className="bg-party-50 p-5 md:p-8 rounded-2xl border-2 border-party-100 shadow-inner">
                <p className="text-sm md:text-xl text-gray-700 leading-snug">
                  Teremos churrasco completo, chope geladinho, água e refrigerante por nossa conta. 
-                 <span className="block font-black text-party-600 mt-4 text-lg md:text-3xl uppercase tracking-tighter leading-tight">
+                 <span className="block font-black text-party-600 mt-4 text-lg md:text-3xl uppercase tracking-tighter leading-tight break-words">
                    O resto você traz na bagagem (principalmente a alegria)!
                  </span>
                </p>

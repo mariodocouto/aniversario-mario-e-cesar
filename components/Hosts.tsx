@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 const Hosts: React.FC = () => {
-  // Removendo a barra inicial para maior compatibilidade com o root do projeto
-  const [oldPhotoSrc, setOldPhotoSrc] = useState('foto-antiga.jpg.png');
-  const [newPhotoSrc, setNewPhotoSrc] = useState('foto-nova.jpg.jpg');
+  // Nomes exatos conforme as instruções e o diretório do GitHub
+  const oldPhotoSrc = "./foto-antiga.jpg.png";
+  const newPhotoSrc = "./foto-nova.jpg.jpg";
 
   return (
     <section id="hosts" className="py-20 bg-party-50">
@@ -21,12 +21,7 @@ const Hosts: React.FC = () => {
                 src={oldPhotoSrc}
                 alt="Mário e Cesar - O Início" 
                 className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (!target.src.includes('/foto-antiga.jpg.png')) {
-                    target.src = '/foto-antiga.jpg.png';
-                  }
-                }}
+                loading="lazy"
               />
             </div>
             <div className="absolute bottom-4 left-0 right-0 text-center">
@@ -40,12 +35,7 @@ const Hosts: React.FC = () => {
                 src={newPhotoSrc}
                 alt="Mário e Cesar - Atualmente" 
                 className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  if (!target.src.includes('/foto-nova.jpg.jpg')) {
-                    target.src = '/foto-nova.jpg.jpg';
-                  }
-                }}
+                loading="lazy"
               />
             </div>
             <div className="absolute bottom-4 left-0 right-0 text-center">

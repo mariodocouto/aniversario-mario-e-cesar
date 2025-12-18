@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Caminho exato conforme o GitHub, removendo a barra inicial para maior compatibilidade
-  const jubilaPhoto = "pagode-da-jubila.jpeg";
+  // Caminho exato conforme visto no GitHub
+  const jubilaPhoto = "./pagode-da-jubila.jpeg";
 
   return (
     <section id="event" className="py-20 bg-white">
@@ -67,12 +67,7 @@ const EventDetails: React.FC = () => {
                 src={jubilaPhoto}
                 alt="Pagode da Jubila" 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                onError={(e) => {
-                   const target = e.target as HTMLImageElement;
-                   if (!target.src.includes('/pagode-da-jubila.jpeg')) {
-                      target.src = '/pagode-da-jubila.jpeg';
-                   }
-                }}
+                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-8">
                 <div>
