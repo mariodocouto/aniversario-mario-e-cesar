@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Caminho exato conforme visto no GitHub
-  const jubilaPhoto = "./pagode-da-jubila.jpeg";
+  // Caminho absoluto para garantir o carregamento na raiz do domínio
+  const jubilaPhoto = "/pagode-da-jubila.jpeg";
 
   return (
     <section id="event" className="py-20 bg-white">
@@ -35,7 +35,7 @@ const EventDetails: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-black text-xl text-gray-800 leading-none mb-1">12:00h – O Início</p>
-                    <p className="text-gray-600">Churrasco liberado, chope gelado e piscina disponível. Não esquece a bermuda de banho!</p>
+                    <p className="text-gray-600">Churrasco e chope gelado te esperando</p>
                   </div>
                 </div>
 
@@ -45,7 +45,7 @@ const EventDetails: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-black text-xl text-gray-800 leading-none mb-1">Tarde Adentro</p>
-                    <p className="text-gray-600">Muita resenha, carne no fogo sem parar e o sol de Santa Maria.</p>
+                    <p className="text-gray-600">Carne no fogo, sol, piscina, chope e resenha</p>
                   </div>
                 </div>
 
@@ -62,12 +62,11 @@ const EventDetails: React.FC = () => {
             </div>
 
             {/* Card da Banda */}
-            <div className="group relative h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-all duration-300">
+            <div className="group relative h-72 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-all duration-300">
               <img 
                 src={jubilaPhoto}
                 alt="Pagode da Jubila" 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                loading="eager"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-8">
                 <div>

@@ -1,36 +1,30 @@
 import React from 'react';
-import { Star, Beer } from 'lucide-react';
+import { Beer } from 'lucide-react';
 
 const TheVibe: React.FC = () => {
   return (
     <section id="the-vibe" className="py-12 md:py-20 bg-party-100">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="bg-white p-5 md:p-12 rounded-3xl shadow-2xl border-4 border-party-400 relative overflow-hidden">
-          {/* Decoração de fundo sutil */}
-          <div className="absolute -right-4 -bottom-4 opacity-5">
-            <Beer className="w-32 h-32 md:w-40 md:h-40 text-party-800" />
+        {/* Bloco principal seguindo o design da imagem anexa */}
+        <div className="bg-party-50 p-6 md:p-12 rounded-3xl shadow-xl border-4 border-party-400 relative overflow-hidden">
+          {/* Marca d'água de caneco de chope no fundo conforme a imagem */}
+          <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none">
+            <Beer className="w-32 h-32 md:w-56 md:h-56 text-party-600" />
           </div>
           
-          <div className="flex items-center gap-3 mb-6">
-            <div className="bg-party-600 p-2 rounded-lg shrink-0">
-              <Star className="w-5 h-5 md:w-6 md:h-6 text-white" />
+          <div className="relative z-10 flex flex-col gap-6">
+            <div className="text-gray-700 text-lg md:text-2xl leading-relaxed font-medium max-w-2xl">
+              <p>
+                Teremos churrasco completo, chope geladinho, água e refrigerante por nossa conta.
+              </p>
             </div>
-            <h3 className="text-2xl md:text-4xl font-black text-party-800 uppercase tracking-tight italic">O Rolê</h3>
-          </div>
-
-          <div className="text-gray-700 text-lg md:text-2xl leading-relaxed font-medium">
-            <p className="mb-6">
-              O aniversário conjunto do Mário e do Cesar chegou! <br className="hidden md:block"/>
-              A festa vai rolar no estilo que a gente gosta: pé no chão, copo na mão e sorriso no rosto.
-            </p>
             
-            <div className="bg-party-50 p-5 md:p-8 rounded-2xl border-2 border-party-100 shadow-inner">
-               <p className="text-sm md:text-xl text-gray-700 leading-snug">
-                 Teremos churrasco completo, chope geladinho, água e refrigerante por nossa conta. 
-                 <span className="block font-black text-party-600 mt-4 text-lg md:text-3xl uppercase tracking-tighter leading-tight break-words">
-                   O resto você traz na bagagem (principalmente a alegria)!
-                 </span>
-               </p>
+            <div className="mt-4">
+              <h3 className="text-2xl md:text-5xl font-black text-party-600 uppercase tracking-tighter leading-[1.1] md:leading-none">
+                O RESTO VOCÊ <br className="md:hidden" /> TRAZ NA <br />
+                BAGAGEM <br className="md:hidden" /> (PRINCIPALMENTE <br />
+                A ALEGRIA)!
+              </h3>
             </div>
           </div>
         </div>

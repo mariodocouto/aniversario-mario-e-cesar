@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const Hosts: React.FC = () => {
-  // Nomes exatos conforme as instruções e o diretório do GitHub
-  const oldPhotoSrc = "./foto-antiga.jpg.png";
-  const newPhotoSrc = "./foto-nova.jpg.jpg";
+  // Caminhos absolutos para arquivos na raiz
+  const oldPhotoSrc = "/foto-antiga.jpg.png";
+  const newPhotoSrc = "/foto-nova.jpg.jpg";
 
   return (
     <section id="hosts" className="py-20 bg-party-50">
@@ -21,7 +21,6 @@ const Hosts: React.FC = () => {
                 src={oldPhotoSrc}
                 alt="Mário e Cesar - O Início" 
                 className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
-                loading="lazy"
               />
             </div>
             <div className="absolute bottom-4 left-0 right-0 text-center">
@@ -35,7 +34,6 @@ const Hosts: React.FC = () => {
                 src={newPhotoSrc}
                 alt="Mário e Cesar - Atualmente" 
                 className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
-                loading="lazy"
               />
             </div>
             <div className="absolute bottom-4 left-0 right-0 text-center">
