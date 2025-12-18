@@ -2,6 +2,9 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
+  // Seguindo o padrão que funcionou nas outras fotos do site
+  const bandImage = "/foto-pagode.png";
+
   return (
     <section id="event" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -59,9 +62,9 @@ const EventDetails: React.FC = () => {
             </div>
 
             {/* Foto da Banda - Atração Principal */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300">
+            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 bg-gray-100">
               <img 
-                src="/foto-pagode.png" 
+                src={bandImage} 
                 alt="Atração principal" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />

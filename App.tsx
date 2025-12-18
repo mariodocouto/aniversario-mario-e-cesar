@@ -2,7 +2,6 @@ import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import TheVibe from './components/TheVibe';
 import EventDetails from './components/EventDetails';
 import Hosts from './components/Hosts';
 import Gifts from './components/Gifts';
@@ -16,7 +15,6 @@ const HomePage: React.FC = () => (
     <div className="pt-16">
       <Countdown />
       <Hero />
-      <TheVibe />
       <EventDetails />
       <Hosts />
       <RSVP />
