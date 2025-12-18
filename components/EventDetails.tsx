@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Nome do arquivo atualizado conforme solicitação do usuário
-  const jubilaPhoto = "foto-pagode.jpeg";
+  // Nome do arquivo da imagem da banda com caminho absoluto para maior compatibilidade
+  const jubilaPhoto = "/foto-pagode.jpeg";
 
   return (
     <section id="event" className="py-20 bg-white">
@@ -16,8 +16,8 @@ const EventDetails: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Lado Esquerdo: Cronograma e Banda */}
-          <div className="space-y-8">
-            <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden">
+          <div className="space-y-8 flex flex-col">
+            <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden flex-1">
               <div className="absolute top-0 right-0 p-4 opacity-5">
                 <Star className="w-24 h-24 text-party-800" />
               </div>
@@ -54,27 +54,23 @@ const EventDetails: React.FC = () => {
                     <Music className="w-5 h-5 text-white" />
                   </div>
                   <div>
-                    <p className="font-black text-xl text-gray-800 leading-none mb-1">16:00h – Pagode da Jubila</p>
-                    <p className="text-gray-600">Show ao vivo com a atração confirmada para animar a galera.</p>
+                    <p className="font-black text-xl text-gray-800 leading-none mb-1">16:00h – Show ao Vivo</p>
+                    <p className="text-gray-600">Muita música para animar a galera até o sol se pôr.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Card da Banda */}
-            <div className="group relative h-72 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-all duration-300">
+            {/* Card da Banda - Exibe apenas "Atração Principal" sobre a foto */}
+            <div className="group relative h-72 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300">
               <img 
                 src={jubilaPhoto}
-                alt="Pagode da Jubila" 
+                alt="Atração Principal" 
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-8">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
                 <div>
-                  <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest mb-2 inline-block">Atração Principal</span>
-                  <h4 className="text-white font-black text-4xl uppercase italic leading-none">Pagode da Jubila</h4>
-                  <p className="text-party-100 font-bold mt-2 flex items-center gap-2 text-lg">
-                    <Music className="w-5 h-5" /> Prepare o gogó!
-                  </p>
+                  <h4 className="text-white font-black text-3xl uppercase italic leading-none">Atração Principal</h4>
                 </div>
               </div>
             </div>
