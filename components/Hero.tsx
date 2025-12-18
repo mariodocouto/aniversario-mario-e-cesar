@@ -3,7 +3,7 @@ import { ChevronDown } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="min-h-screen flex flex-col items-center justify-center text-center px-4 pt-16 bg-gradient-to-br from-party-100 to-party-200">
+    <section id="home" className="min-h-[80vh] flex flex-col items-center justify-center text-center px-4 py-12 bg-gradient-to-br from-party-100 to-party-200">
       <div className="max-w-4xl mx-auto space-y-8 animate-fade-in-up">
         <div className="bg-white/80 backdrop-blur-sm p-8 rounded-3xl shadow-xl border-4 border-party-400 transform rotate-1 hover:rotate-0 transition-transform duration-500">
           <h1 className="text-4xl md:text-6xl font-black text-party-800 mb-4 leading-tight">

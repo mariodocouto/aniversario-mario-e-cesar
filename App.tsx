@@ -8,14 +8,18 @@ import Gifts from './components/Gifts';
 import RSVP from './components/RSVP';
 import MarioShop from './components/MarioShop';
 import CesarShop from './components/CesarShop';
+import Countdown from './components/Countdown';
 
 const HomePage: React.FC = () => (
   <>
-    <Hero />
-    <EventDetails />
-    <Hosts />
-    <RSVP />
-    <Gifts />
+    <div className="pt-16"> {/* Spacer for fixed header */}
+      <Countdown />
+      <Hero />
+      <EventDetails />
+      <Hosts />
+      <RSVP />
+      <Gifts />
+    </div>
   </>
 );
 
