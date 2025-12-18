@@ -1,53 +1,134 @@
-import React from 'react';
-import { MapPin, Calendar, Clock, Beer } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Calendar, Clock, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
+  const [jubilaPhotoSrc, setJubilaPhotoSrc] = useState('/pagode-da-jubila.jpg');
+
+  const handleJubilaPhotoError = () => {
+    if (jubilaPhotoSrc === '/pagode-da-jubila.jpg') setJubilaPhotoSrc('/pagode-da-jubila.png');
+    else if (jubilaPhotoSrc === '/pagode-da-jubila.png') setJubilaPhotoSrc('/pagode-da-jubila.jpeg');
+  };
+
   return (
     <section id="event" className="py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-party-800 mb-4">O Rolê</h2>
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-party-800 mb-4 uppercase tracking-tight">O Evento</h2>
           <div className="w-24 h-2 bg-party-500 mx-auto rounded-full"></div>
+          <p className="mt-4 text-gray-600 font-medium">Tudo o que você precisa saber para não se perder no caminho (ou no chope).</p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 text-lg text-gray-700 bg-party-50 p-8 rounded-2xl border-2 border-party-200 shadow-lg">
-            <p className="font-medium text-xl leading-relaxed">
-              O aniversário conjunto do Mário e do Cesar chegou! Vai rolar lá na casa dos pais do Cesar.
-            </p>
-            
-            <div className="flex items-start gap-3">
-              <MapPin className="w-6 h-6 text-party-600 flex-shrink-0 mt-1" />
-              <span>Rua Clarice Lispector, 375 – Tomazetti – Santa Maria/RS</span>
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+          {/* Lado Esquerdo: Cronograma e Banda */}
+          <div className="space-y-8">
+            <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-5">
+                <Star className="w-24 h-24 text-party-800" />
+              </div>
+              
+              <h3 className="text-2xl font-black text-party-800 mb-8 flex items-center gap-2">
+                <Calendar className="w-6 h-6" /> Cronograma do Dia
+              </h3>
+
+              <div className="space-y-8 relative">
+                {/* Linha do tempo visual */}
+                <div className="absolute left-[19px] top-2 bottom-2 w-0.5 bg-party-200 hidden sm:block"></div>
+
+                <div className="flex items-start gap-4 relative z-10">
+                  <div className="bg-blue-600 p-2.5 rounded-full shadow-lg shrink-0">
+                    <Waves className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-black text-xl text-gray-800 leading-none mb-1">12:00h – O Início</p>
+                    <p className="text-gray-600">Churrasco liberado, chope gelado e piscina disponível. Não esquece a bermuda de banho!</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 relative z-10">
+                  <div className="bg-orange-500 p-2.5 rounded-full shadow-lg shrink-0">
+                    <UtensilsCrossed className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-black text-xl text-gray-800 leading-none mb-1">Tarde Adentro</p>
+                    <p className="text-gray-600">Muita resenha, carne no fogo sem parar e o sol de Santa Maria.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 relative z-10">
+                  <div className="bg-red-600 p-2.5 rounded-full shadow-lg shrink-0 animate-pulse">
+                    <Music className="w-5 h-5 text-white" />
+                  </div>
+                  <div>
+                    <p className="font-black text-xl text-gray-800 leading-none mb-1">16:00h – Pagode da Jubila</p>
+                    <p className="text-gray-600">Show ao vivo com a atração confirmada para animar a galera.</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <Calendar className="w-6 h-6 text-party-600 flex-shrink-0" />
-              <span>Sábado, dia 20/12/2025</span>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Clock className="w-6 h-6 text-party-600 flex-shrink-0" />
-              <span>A partir das 12h</span>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <Beer className="w-6 h-6 text-party-600 flex-shrink-0 mt-1" />
-              <span>Teremos churrasco, chope, água e refrigerante.<br/>O resto você traz na alegria.</span>
+            {/* Card da Banda */}
+            <div className="group relative h-48 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.02] transition-transform duration-300">
+              <img 
+                src={jubilaPhotoSrc}
+                alt="Pagode da Jubila" 
+                onError={handleJubilaPhotoError}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent flex items-center p-8">
+                <div>
+                  <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest mb-2 inline-block">Atração Principal</span>
+                  <h4 className="text-white font-black text-3xl uppercase italic leading-none">Pagode da Jubila</h4>
+                  <p className="text-party-100 font-bold mt-1 flex items-center gap-2">
+                    <Music className="w-4 h-4" /> Prepare o gogó!
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="h-80 md:h-[500px] w-full rounded-2xl overflow-hidden shadow-xl border-4 border-party-300">
-            <iframe
-              title="Local do Evento"
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              scrolling="no"
-              marginHeight={0}
-              marginWidth={0}
-              src="https://maps.google.com/maps?q=Rua+Clarice+Lispector,+375+Tomazetti+Santa+Maria+RS&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            ></iframe>
+          {/* Lado Direito: Localização e Mapa */}
+          <div className="flex flex-col gap-6">
+            <div className="bg-white p-8 rounded-3xl border-2 border-gray-100 shadow-xl flex flex-col h-full">
+              <div className="flex items-start gap-4 mb-6">
+                <div className="bg-party-600 p-3 rounded-2xl shadow-lg shadow-party-200">
+                  <MapPin className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-black text-gray-800 leading-none mb-2">Localização</h3>
+                  <p className="text-gray-600 font-medium">
+                    Rua Clarice Lispector, 375<br/>
+                    Tomazetti – Santa Maria/RS
+                  </p>
+                  <p className="text-party-600 text-sm font-bold mt-2 uppercase tracking-wider flex items-center gap-1">
+                    <Beer className="w-4 h-4" /> Na casa dos pais do Cesar
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex-1 min-h-[300px] rounded-2xl overflow-hidden shadow-inner border border-gray-200">
+                <iframe
+                  title="Local do Evento"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  scrolling="no"
+                  marginHeight={0}
+                  marginWidth={0}
+                  src="https://maps.google.com/maps?q=Rua+Clarice+Lispector,+375+Tomazetti+Santa+Maria+RS&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  className="grayscale hover:grayscale-0 transition-all duration-500"
+                ></iframe>
+              </div>
+              
+              <a 
+                href="https://www.google.com/maps/dir/?api=1&destination=Rua+Clarice+Lispector+375+Santa+Maria+RS" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-6 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 rounded-xl text-center transition-colors flex items-center justify-center gap-2 shadow-lg"
+              >
+                Abrir no GPS
+                <MapPin className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
