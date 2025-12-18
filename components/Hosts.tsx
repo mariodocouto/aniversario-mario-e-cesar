@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 
 const Hosts: React.FC = () => {
-  const [oldPhotoSrc, setOldPhotoSrc] = useState('foto-antiga.jpg');
-  const [newPhotoSrc, setNewPhotoSrc] = useState('foto-nova.jpg');
+  // Nomes exatos conforme sua instrução
+  const [oldPhotoSrc, setOldPhotoSrc] = useState('/foto-antiga.jpg.png');
+  const [newPhotoSrc, setNewPhotoSrc] = useState('/foto-nova.jpg.jpg');
 
   const handleOldPhotoError = () => {
-    if (oldPhotoSrc === 'foto-antiga.jpg') setOldPhotoSrc('foto-antiga.png');
+    // Fallback caso ainda haja erro
+    if (oldPhotoSrc.endsWith('.png')) setOldPhotoSrc('/foto-antiga.jpg');
   };
 
   const handleNewPhotoError = () => {
-    if (newPhotoSrc === 'foto-nova.jpg') setNewPhotoSrc('foto-nova.png');
+    // Fallback caso ainda haja erro
+    if (newPhotoSrc.endsWith('.jpg')) setOldPhotoSrc('/foto-nova.jpg');
   };
 
   return (
