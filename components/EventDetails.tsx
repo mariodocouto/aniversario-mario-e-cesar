@@ -12,9 +12,9 @@ const EventDetails: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-          {/* Lado Esquerdo: Cronograma */}
+          {/* Lado Esquerdo: Cronograma e Foto da Banda */}
           <div className="space-y-8 flex flex-col">
-            <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden flex-1">
+            <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-5">
                 <Star className="w-24 h-24 text-party-800" />
               </div>
@@ -54,6 +54,23 @@ const EventDetails: React.FC = () => {
                     <p className="font-black text-xl text-gray-800 leading-none mb-1">16:00h – Show ao Vivo</p>
                     <p className="text-gray-600">Muita música para animar a galera até o sol se pôr.</p>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Foto da Banda - Atração Principal */}
+            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300">
+              <img 
+                src="/foto-pagode.png" 
+                alt="Atração principal" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+                <div className="flex items-center gap-3">
+                  <Music className="w-6 h-6 text-party-400" />
+                  <h4 className="text-white font-black text-3xl uppercase italic leading-none tracking-tight">
+                    Atração principal
+                  </h4>
                 </div>
               </div>
             </div>
