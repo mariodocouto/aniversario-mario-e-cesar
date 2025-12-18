@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MapPin, Calendar, Clock, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  const [jubilaPhotoSrc, setJubilaPhotoSrc] = useState('/pagode-da-jubila.jpg');
-
-  const handleJubilaPhotoError = () => {
-    if (jubilaPhotoSrc === '/pagode-da-jubila.jpg') setJubilaPhotoSrc('/pagode-da-jubila.png');
-    else if (jubilaPhotoSrc === '/pagode-da-jubila.png') setJubilaPhotoSrc('/pagode-da-jubila.jpeg');
-  };
+  // Usando caminhos relativos sem a barra inicial para maior compatibilidade
+  const jubilaPhoto = "pagode-da-jubila.jpg";
 
   return (
     <section id="event" className="py-20 bg-white">
@@ -15,7 +11,7 @@ const EventDetails: React.FC = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-party-800 mb-4 uppercase tracking-tight">O Evento</h2>
           <div className="w-24 h-2 bg-party-500 mx-auto rounded-full"></div>
-          <p className="mt-4 text-gray-600 font-medium">Tudo o que você precisa saber para não se perder no caminho (ou no chope).</p>
+          <p className="mt-4 text-gray-600 font-medium text-lg">Tudo o que você precisa saber para não se perder no caminho.</p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
@@ -31,7 +27,6 @@ const EventDetails: React.FC = () => {
               </h3>
 
               <div className="space-y-8 relative">
-                {/* Linha do tempo visual */}
                 <div className="absolute left-[19px] top-2 bottom-2 w-0.5 bg-party-200 hidden sm:block"></div>
 
                 <div className="flex items-start gap-4 relative z-10">
@@ -66,20 +61,20 @@ const EventDetails: React.FC = () => {
               </div>
             </div>
 
-            {/* Card da Banda */}
-            <div className="group relative h-48 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.02] transition-transform duration-300">
+            {/* Card da Banda - Corrigido */}
+            <div className="group relative h-64 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:rotate-1 transition-all duration-300">
               <img 
-                src={jubilaPhotoSrc}
+                src={jubilaPhoto}
                 alt="Pagode da Jubila" 
-                onError={handleJubilaPhotoError}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent flex items-center p-8">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-8">
                 <div>
                   <span className="bg-red-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-widest mb-2 inline-block">Atração Principal</span>
-                  <h4 className="text-white font-black text-3xl uppercase italic leading-none">Pagode da Jubila</h4>
-                  <p className="text-party-100 font-bold mt-1 flex items-center gap-2">
-                    <Music className="w-4 h-4" /> Prepare o gogó!
+                  <h4 className="text-white font-black text-4xl uppercase italic leading-none">Pagode da Jubila</h4>
+                  <p className="text-party-100 font-bold mt-2 flex items-center gap-2 text-lg">
+                    <Music className="w-5 h-5" /> Prepare o gogó!
                   </p>
                 </div>
               </div>
@@ -95,7 +90,7 @@ const EventDetails: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-black text-gray-800 leading-none mb-2">Localização</h3>
-                  <p className="text-gray-600 font-medium">
+                  <p className="text-gray-600 font-medium text-lg">
                     Rua Clarice Lispector, 375<br/>
                     Tomazetti – Santa Maria/RS
                   </p>
@@ -105,7 +100,7 @@ const EventDetails: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex-1 min-h-[300px] rounded-2xl overflow-hidden shadow-inner border border-gray-200">
+              <div className="flex-1 min-h-[350px] rounded-2xl overflow-hidden shadow-inner border border-gray-200">
                 <iframe
                   title="Local do Evento"
                   width="100%"
@@ -115,7 +110,7 @@ const EventDetails: React.FC = () => {
                   marginHeight={0}
                   marginWidth={0}
                   src="https://maps.google.com/maps?q=Rua+Clarice+Lispector,+375+Tomazetti+Santa+Maria+RS&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                  className="grayscale hover:grayscale-0 transition-all duration-500"
+                  className="hover:grayscale-0 transition-all duration-500"
                 ></iframe>
               </div>
               
@@ -123,10 +118,10 @@ const EventDetails: React.FC = () => {
                 href="https://www.google.com/maps/dir/?api=1&destination=Rua+Clarice+Lispector+375+Santa+Maria+RS" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="mt-6 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-4 rounded-xl text-center transition-colors flex items-center justify-center gap-2 shadow-lg"
+                className="mt-6 w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-5 rounded-xl text-center transition-colors flex items-center justify-center gap-2 shadow-lg text-lg"
               >
                 Abrir no GPS
-                <MapPin className="w-5 h-5" />
+                <MapPin className="w-6 h-6" />
               </a>
             </div>
           </div>
