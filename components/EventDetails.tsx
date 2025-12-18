@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Nome do arquivo da imagem da banda com caminho absoluto para maior compatibilidade
-  const jubilaPhoto = "/foto-pagode.jpeg";
+  // Nome do arquivo da imagem da banda com caminho absoluto atualizado para .png
+  const jubilaPhoto = "/foto-pagode.png";
 
   return (
     <section id="event" className="py-20 bg-white">
