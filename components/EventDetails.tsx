@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Caminho absoluto para garantir o carregamento na raiz do domínio
-  const jubilaPhoto = "/pagode-da-jubila.jpeg";
+  // Nome do arquivo atualizado conforme solicitação do usuário
+  const jubilaPhoto = "foto-pagode.jpeg";
 
   return (
     <section id="event" className="py-20 bg-white">
