@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
 
 const Hosts: React.FC = () => {
-  // Nomes exatos conforme sua instrução
-  const [oldPhotoSrc, setOldPhotoSrc] = useState('/foto-antiga.jpg.png');
-  const [newPhotoSrc, setNewPhotoSrc] = useState('/foto-nova.jpg.jpg');
-
-  const handleOldPhotoError = () => {
-    // Fallback caso ainda haja erro
-    if (oldPhotoSrc.endsWith('.png')) setOldPhotoSrc('/foto-antiga.jpg');
-  };
-
-  const handleNewPhotoError = () => {
-    // Fallback caso ainda haja erro
-    if (newPhotoSrc.endsWith('.jpg')) setOldPhotoSrc('/foto-nova.jpg');
-  };
+  // Removendo a barra inicial para maior compatibilidade com o root do projeto
+  const [oldPhotoSrc, setOldPhotoSrc] = useState('foto-antiga.jpg.png');
+  const [newPhotoSrc, setNewPhotoSrc] = useState('foto-nova.jpg.jpg');
 
   return (
     <section id="hosts" className="py-20 bg-party-50">
@@ -30,8 +20,13 @@ const Hosts: React.FC = () => {
               <img 
                 src={oldPhotoSrc}
                 alt="Mário e Cesar - O Início" 
-                onError={handleOldPhotoError}
                 className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (!target.src.includes('/foto-antiga.jpg.png')) {
+                    target.src = '/foto-antiga.jpg.png';
+                  }
+                }}
               />
             </div>
             <div className="absolute bottom-4 left-0 right-0 text-center">
@@ -44,8 +39,13 @@ const Hosts: React.FC = () => {
               <img 
                 src={newPhotoSrc}
                 alt="Mário e Cesar - Atualmente" 
-                onError={handleNewPhotoError}
                 className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (!target.src.includes('/foto-nova.jpg.jpg')) {
+                    target.src = '/foto-nova.jpg.jpg';
+                  }
+                }}
               />
             </div>
             <div className="absolute bottom-4 left-0 right-0 text-center">
