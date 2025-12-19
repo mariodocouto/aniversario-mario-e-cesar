@@ -2,7 +2,8 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Caminho atualizado para o novo arquivo que você está subindo no GitHub
+  // Caminho exato para o arquivo que você subiu no GitHub
+  // Lembre-se: o nome do arquivo no GitHub deve ser exatamente 'foto.png'
   const bandImage = "/foto.png";
 
   return (
@@ -62,15 +63,11 @@ const EventDetails: React.FC = () => {
             </div>
 
             {/* Foto da Banda - Atração Principal */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 bg-gray-100">
+            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 bg-gray-200">
               <img 
                 src={bandImage} 
                 alt="Atração principal" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                onError={(e) => {
-                  // Se a imagem foto.png ainda não existir, mostra uma placeholder de festa
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1514525253361-bee8718a300a?q=80&w=1000&auto=format&fit=crop";
-                }}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
                 <div className="flex items-center gap-3">
