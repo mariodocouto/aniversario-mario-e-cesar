@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Seguindo o padrão que funcionou nas outras fotos do site
+  // Caminho absoluto para garantir que o navegador encontre o arquivo na raiz do servidor
   const bandImage = "/foto-pagode.png";
 
   return (
