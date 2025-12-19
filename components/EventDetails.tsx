@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Caminho absoluto para garantir que o navegador encontre o arquivo na raiz do servidor
+  // Caminho direto para o arquivo que está na raiz do seu GitHub
   const bandImage = "/foto-pagode.png";
 
   return (
@@ -15,7 +15,6 @@ const EventDetails: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-          {/* Lado Esquerdo: Cronograma e Foto da Banda */}
           <div className="space-y-8 flex flex-col">
             <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-5">
@@ -61,8 +60,8 @@ const EventDetails: React.FC = () => {
               </div>
             </div>
 
-            {/* Foto da Banda - Atração Principal */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 bg-gray-100">
+            {/* FOTO DA BANDA - USANDO O MESMO PADRÃO DAS OUTRAS FOTOS */}
+            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 bg-gray-200">
               <img 
                 src={bandImage} 
                 alt="Atração principal" 
@@ -79,7 +78,6 @@ const EventDetails: React.FC = () => {
             </div>
           </div>
 
-          {/* Lado Direito: Localização e Mapa */}
           <div className="flex flex-col gap-6">
             <div className="bg-white p-8 rounded-3xl border-2 border-gray-100 shadow-xl flex flex-col h-full">
               <div className="flex items-start gap-4 mb-6">

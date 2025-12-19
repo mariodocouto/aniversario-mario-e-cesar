@@ -9,6 +9,7 @@ import RSVP from './components/RSVP';
 import MarioShop from './components/MarioShop';
 import CesarShop from './components/CesarShop';
 import Countdown from './components/Countdown';
+import TheVibe from './components/TheVibe';
 
 const HomePage: React.FC = () => (
   <>
@@ -16,6 +17,7 @@ const HomePage: React.FC = () => (
       <Countdown />
       <Hero />
       <EventDetails />
+      <TheVibe />
       <Hosts />
       <RSVP />
       <Gifts />
