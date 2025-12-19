@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Seguindo EXATAMENTE o padrão que funcionou nos outros componentes
+  // Caminho absoluto para o arquivo na raiz, seguindo o padrão que funcionou nos outros componentes
   const bandImage = "/foto.png";
 
   return (
@@ -60,9 +60,9 @@ const EventDetails: React.FC = () => {
               </div>
             </div>
 
-            {/* FOTO DA ATRAÇÃO - PADRÃO IDENTICO AOS ANIVERSARIANTES */}
+            {/* FOTO DA ATRAÇÃO - PADRÃO EXATAMENTE IGUAL AOS ANIVERSARIANTES (Hosts.tsx) */}
             <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transition-all duration-500 hover:shadow-2xl">
-              <div className="h-80 bg-gray-200 relative">
+              <div className="aspect-video bg-gray-200 relative">
                 <img 
                   src={bandImage}
                   alt="Atração Principal" 
