@@ -1,9 +1,28 @@
-import React from 'react';
-import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
+import React, { useState } from 'react';
+import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star, ImageOff } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Usando o caminho absoluto que funciona nas outras fotos do site
-  const bandImage = "/foto.jpg";
+  // "Dando um jeito": Lista de nomes de arquivos que vi no seu print. 
+  // O segredo aqui é NÃO usar a barra "/" no início, para o navegador buscar dentro da pasta do projeto.
+  const possibleImages = [
+    "foto.jpg",
+    "foto.jpg.jpg",
+    "foto-pagode.jpeg",
+    "foto-pagode.png",
+    "./foto.jpg"
+  ];
+
+  const [currentImgIndex, setCurrentImgIndex] = useState(0);
+  const [hasFailedAll, setHasFailedAll] = useState(false);
+
+  const handleImageError = () => {
+    if (currentImgIndex < possibleImages.length - 1) {
+      console.log(`Tentando próxima opção: ${possibleImages[currentImgIndex + 1]}`);
+      setCurrentImgIndex(currentImgIndex + 1);
+    } else {
+      setHasFailedAll(true);
+    }
+  };
 
   return (
     <section id="event" className="py-20 bg-white">
@@ -55,32 +74,34 @@ const EventDetails: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-black text-xl text-gray-800 leading-none mb-1">16:00h – Show ao Vivo</p>
-                    <p className="text-gray-600">Muita música para animar a galera até o sol se pôr.</p>
+                    <p className="text-gray-600">Pagode da Jubila animando a galera!</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* FOTO DA ATRAÇÃO - ESTILO PORTA-RETRATO */}
+            {/* FOTO DA ATRAÇÃO - COM ROLETA DE TENTATIVAS RELATIVAS */}
             <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-2xl">
-              <div className="aspect-video bg-gray-200 relative">
-                <img 
-                  src={bandImage}
-                  alt="Atração Principal" 
-                  className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
-                  onError={(e) => {
-                    // Fallback simples caso mude a extensão futuramente
-                    const target = e.target as HTMLImageElement;
-                    if (!target.src.endsWith('.png')) {
-                      target.src = "/foto.png";
-                    }
-                  }}
-                />
+              <div className="aspect-video bg-gray-200 relative flex items-center justify-center">
+                {!hasFailedAll ? (
+                  <img 
+                    src={possibleImages[currentImgIndex]}
+                    alt="Pagode da Jubila" 
+                    onError={handleImageError}
+                    className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
+                  />
+                ) : (
+                  <div className="text-center p-6">
+                    <ImageOff className="w-12 h-12 text-gray-400 mx-auto mb-2" />
+                    <p className="text-gray-500 font-bold text-sm uppercase">Foto não encontrada</p>
+                    <p className="text-[10px] text-gray-400 mt-1">Verifique o nome do arquivo no repositório</p>
+                  </div>
+                )}
               </div>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 p-6">
                 <div className="flex items-center gap-3">
                   <Music className="w-6 h-6 text-party-400" />
-                  <h4 className="text-white font-black text-2xl uppercase italic">Atração Principal</h4>
+                  <h4 className="text-white font-black text-2xl uppercase italic tracking-tighter">Pagode da Jubila</h4>
                 </div>
               </div>
             </div>
