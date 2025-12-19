@@ -2,25 +2,18 @@ import React, { useState } from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star, ImageOff } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // "Dando um jeito": Lista de nomes de arquivos que vi no seu print. 
-  // O segredo aqui é NÃO usar a barra "/" no início, para o navegador buscar dentro da pasta do projeto.
-  const possibleImages = [
-    "foto.jpg",
-    "foto.jpg.jpg",
-    "foto-pagode.jpeg",
-    "foto-pagode.png",
-    "./foto.jpg"
-  ];
-
-  const [currentImgIndex, setCurrentImgIndex] = useState(0);
-  const [hasFailedAll, setHasFailedAll] = useState(false);
+  // Caminho relativo direto (sem barra) é o mais seguro para subpastas
+  const [imgSrc, setImgSrc] = useState("foto.jpg");
+  const [hasFailed, setHasFailed] = useState(false);
 
   const handleImageError = () => {
-    if (currentImgIndex < possibleImages.length - 1) {
-      console.log(`Tentando próxima opção: ${possibleImages[currentImgIndex + 1]}`);
-      setCurrentImgIndex(currentImgIndex + 1);
+    if (imgSrc === "foto.jpg") {
+      // Se foto.jpg falhar, tenta o outro arquivo que vi no seu print
+      setImgSrc("foto-pagode.jpeg");
+    } else if (imgSrc === "foto-pagode.jpeg") {
+      setImgSrc("foto-pagode.png");
     } else {
-      setHasFailedAll(true);
+      setHasFailed(true);
     }
   };
 
@@ -80,21 +73,20 @@ const EventDetails: React.FC = () => {
               </div>
             </div>
 
-            {/* FOTO DA ATRAÇÃO - COM ROLETA DE TENTATIVAS RELATIVAS */}
+            {/* FOTO DA ATRAÇÃO */}
             <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-2xl">
-              <div className="aspect-video bg-gray-200 relative flex items-center justify-center">
-                {!hasFailedAll ? (
+              <div className="aspect-video bg-gray-100 relative flex items-center justify-center">
+                {!hasFailed ? (
                   <img 
-                    src={possibleImages[currentImgIndex]}
+                    src={imgSrc}
                     alt="Pagode da Jubila" 
                     onError={handleImageError}
                     className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
                   />
                 ) : (
-                  <div className="text-center p-6">
-                    <ImageOff className="w-12 h-12 text-gray-400 mx-auto mb-2" />
-                    <p className="text-gray-500 font-bold text-sm uppercase">Foto não encontrada</p>
-                    <p className="text-[10px] text-gray-400 mt-1">Verifique o nome do arquivo no repositório</p>
+                  <div className="text-center p-6 bg-gray-50 w-full h-full flex flex-col items-center justify-center">
+                    <ImageOff className="w-12 h-12 text-gray-300 mb-2" />
+                    <p className="text-gray-400 font-bold text-xs uppercase">Foto não encontrada no servidor</p>
                   </div>
                 )}
               </div>

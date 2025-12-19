@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Hosts: React.FC = () => {
-  // Caminhos absolutos para arquivos na raiz
-  const oldPhotoSrc = "/foto-antiga.jpg.png";
-  const newPhotoSrc = "/foto-nova.jpg.jpg";
+  // Removendo a barra inicial para ser um caminho relativo puro
+  const oldPhotoSrc = "foto-antiga.jpg.png";
+  const newPhotoSrc = "foto-nova.jpg.jpg";
 
   return (
     <section id="hosts" className="py-20 bg-party-50">
