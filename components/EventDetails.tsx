@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Caminho absoluto para o arquivo na raiz, seguindo o padrão que funcionou nos outros componentes
-  const bandImage = "/foto.png";
+  // Conforme solicitado: usando o caminho direto para o arquivo que você subiu
+  const bandImage = "/foto.jpg";
 
   return (
     <section id="event" className="py-20 bg-white">
@@ -16,6 +16,7 @@ const EventDetails: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           <div className="space-y-8 flex flex-col">
+            {/* Cronograma */}
             <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-5">
                 <Star className="w-24 h-24 text-party-800" />
@@ -60,8 +61,8 @@ const EventDetails: React.FC = () => {
               </div>
             </div>
 
-            {/* FOTO DA ATRAÇÃO - PADRÃO EXATAMENTE IGUAL AOS ANIVERSARIANTES (Hosts.tsx) */}
-            <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transition-all duration-500 hover:shadow-2xl">
+            {/* FOTO DA ATRAÇÃO - ESTILO IDÊNTICO AOS ANIVERSARIANTES */}
+            <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-2xl">
               <div className="aspect-video bg-gray-200 relative">
                 <img 
                   src={bandImage}
@@ -78,6 +79,7 @@ const EventDetails: React.FC = () => {
             </div>
           </div>
 
+          {/* Mapa e Localização */}
           <div className="flex flex-col gap-6">
             <div className="bg-white p-8 rounded-3xl border-2 border-gray-100 shadow-xl flex flex-col h-full">
               <div className="flex items-start gap-4 mb-6">
