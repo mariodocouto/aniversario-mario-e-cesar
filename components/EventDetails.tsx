@@ -2,7 +2,7 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Conforme solicitado: usando o caminho direto para o arquivo que você subiu
+  // Usando o caminho absoluto que funciona nas outras fotos do site
   const bandImage = "/foto.jpg";
 
   return (
@@ -61,13 +61,20 @@ const EventDetails: React.FC = () => {
               </div>
             </div>
 
-            {/* FOTO DA ATRAÇÃO - ESTILO IDÊNTICO AOS ANIVERSARIANTES */}
+            {/* FOTO DA ATRAÇÃO - ESTILO PORTA-RETRATO */}
             <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transform rotate-2 hover:rotate-0 transition-all duration-500 hover:shadow-2xl">
               <div className="aspect-video bg-gray-200 relative">
                 <img 
                   src={bandImage}
                   alt="Atração Principal" 
                   className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
+                  onError={(e) => {
+                    // Fallback simples caso mude a extensão futuramente
+                    const target = e.target as HTMLImageElement;
+                    if (!target.src.endsWith('.png')) {
+                      target.src = "/foto.png";
+                    }
+                  }}
                 />
               </div>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 p-6">
