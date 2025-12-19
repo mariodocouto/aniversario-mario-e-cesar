@@ -2,8 +2,8 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Caminho direto para o arquivo que está na raiz do seu GitHub
-  const bandImage = "/foto-pagode.png";
+  // Caminho atualizado para o novo arquivo que você está subindo no GitHub
+  const bandImage = "/foto.png";
 
   return (
     <section id="event" className="py-20 bg-white">
@@ -15,6 +15,7 @@ const EventDetails: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+          {/* Lado Esquerdo: Cronograma e Foto da Banda */}
           <div className="space-y-8 flex flex-col">
             <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-5">
@@ -60,12 +61,16 @@ const EventDetails: React.FC = () => {
               </div>
             </div>
 
-            {/* FOTO DA BANDA - USANDO O MESMO PADRÃO DAS OUTRAS FOTOS */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 bg-gray-200">
+            {/* Foto da Banda - Atração Principal */}
+            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 bg-gray-100">
               <img 
                 src={bandImage} 
                 alt="Atração principal" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                onError={(e) => {
+                  // Se a imagem foto.png ainda não existir, mostra uma placeholder de festa
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1514525253361-bee8718a300a?q=80&w=1000&auto=format&fit=crop";
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
                 <div className="flex items-center gap-3">
@@ -78,6 +83,7 @@ const EventDetails: React.FC = () => {
             </div>
           </div>
 
+          {/* Lado Direito: Localização e Mapa */}
           <div className="flex flex-col gap-6">
             <div className="bg-white p-8 rounded-3xl border-2 border-gray-100 shadow-xl flex flex-col h-full">
               <div className="flex items-start gap-4 mb-6">
