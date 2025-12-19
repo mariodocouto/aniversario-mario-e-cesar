@@ -2,8 +2,7 @@ import React from 'react';
 import { MapPin, Calendar, Beer, Waves, Music, UtensilsCrossed, Star } from 'lucide-react';
 
 const EventDetails: React.FC = () => {
-  // Caminho exato para o arquivo que você subiu no GitHub
-  // Lembre-se: o nome do arquivo no GitHub deve ser exatamente 'foto.png'
+  // Seguindo EXATAMENTE o padrão que funcionou nos outros componentes
   const bandImage = "/foto.png";
 
   return (
@@ -16,7 +15,6 @@ const EventDetails: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
-          {/* Lado Esquerdo: Cronograma e Foto da Banda */}
           <div className="space-y-8 flex flex-col">
             <div className="bg-party-50 p-8 rounded-3xl border-2 border-party-200 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-5">
@@ -62,25 +60,24 @@ const EventDetails: React.FC = () => {
               </div>
             </div>
 
-            {/* Foto da Banda - Atração Principal */}
-            <div className="group relative h-80 rounded-3xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.01] transition-all duration-300 bg-gray-200">
-              <img 
-                src={bandImage} 
-                alt="Atração principal" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 block"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+            {/* FOTO DA ATRAÇÃO - PADRÃO IDENTICO AOS ANIVERSARIANTES */}
+            <div className="relative group overflow-hidden rounded-3xl shadow-xl border-4 border-white transition-all duration-500 hover:shadow-2xl">
+              <div className="h-80 bg-gray-200 relative">
+                <img 
+                  src={bandImage}
+                  alt="Atração Principal" 
+                  className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
+                />
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 p-6">
                 <div className="flex items-center gap-3">
                   <Music className="w-6 h-6 text-party-400" />
-                  <h4 className="text-white font-black text-3xl uppercase italic leading-none tracking-tight">
-                    Atração principal
-                  </h4>
+                  <h4 className="text-white font-black text-2xl uppercase italic">Atração Principal</h4>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Lado Direito: Localização e Mapa */}
           <div className="flex flex-col gap-6">
             <div className="bg-white p-8 rounded-3xl border-2 border-gray-100 shadow-xl flex flex-col h-full">
               <div className="flex items-start gap-4 mb-6">
